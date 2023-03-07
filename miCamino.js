@@ -196,41 +196,59 @@ console.log(`El material que debo llevar es:`);
 // lo tercero que debo  llevar es {nombre del tercer material} y es { su descripcion}
 // y por ultimo debo llevar la {mochila} que es {su descripcion}
 const casos = [
-"lo primero que debo llevar es",
-"lo segundo que debo llevar es",
-"lo tercero que debo llevar es",
-"lo cuarto que debo llevar es"
-]
+  "lo primero que debo llevar es",
+  "lo segundo que debo llevar es",
+  "lo tercero que debo llevar es",
+  "lo cuarto que debo llevar es",
+];
 
 for (let index = 0; index < miCamino.material.length; index++) {
   const objetos = miCamino.material[index];
 
-  console.log(`${casos[index]} ${miCamino.material[index].nombre} - ${miCamino.material[index].descripcion}`)
-  
+  console.log(
+    `${casos[index]} ${miCamino.material[index].nombre} - ${miCamino.material[index].descripcion}`
+  );
 }
 
 //5º: vamos a decir: para subir al {nombre de la cima}  debo subir {altura } metros y debo viajar a {ubicacion}
 for (let index = 0; index < miCamino.cimas.length; index++) {
   const element = miCamino.cimas[index];
-  
-  console.log(`para subir al ${element.nombre} debo subir ${element.altitud} metros y debo viajar a ${element.localizacion}`);
+
+  console.log(
+    `para subir al ${element.nombre} debo subir ${element.altitud} metros y debo viajar a ${element.localizacion}`
+  );
 }
 //6º: para llegar a la cima tendremos que darnos aliento y decirnos la frase que esta divida y que tiene que quedar así: "Tranquilo,lo peor ha pasado ya.¡Animo!
 
-let mensaje = miCamino.subiendoAlEverest[0][0].campoBase[0].campoI.campoII.campoIII.campoIV
-for(const element of mensaje) {
+let mensaje =
+  miCamino.subiendoAlEverest[0][0].campoBase[0].campoI.campoII.campoIII.campoIV;
+for (const element of mensaje) {
   console.log(element);
-
 }
 
 //7º: mostraremos el mensaje final guardado en la cima
-const mensajeFinal =[]
-for (let i = 0; i < miCamino.subiendoAlEverest[0][0].campoBase[0].campoI.campoII.campoIII.campoIV.length; i++) {
-  const element = miCamino.subiendoAlEverest[0][0].campoBase[0].campoI.campoII.campoIII.campoIV[i];
-  if (typeof element === "string"){
+const mensajeFinal = [];
+for (
+  let i = 0;
+  i <
+  miCamino.subiendoAlEverest[0][0].campoBase[0].campoI.campoII.campoIII.campoIV
+    .length;
+  i++
+) {
+  const element =
+    miCamino.subiendoAlEverest[0][0].campoBase[0].campoI.campoII.campoIII
+      .campoIV[i];
+  if (typeof element === "string") {
     mensajeFinal.push(element);
   }
 }
 console.log(mensajeFinal.join(" "));
 //por ultimo como bonus,en un console.log mostraremos por pantalla las urls de todas las imagenes de los materiales y en otro haremos la media de la altitud de todas la cimas que hemos subido.
 
+miCamino.material.forEach(function (elem) {
+  elem.imagenes.forEach(function (imagen) {
+    for (const key in imagen) {
+      console.log(`${elem.nombre} - ${imagen[key].url}`);
+    }
+  });
+});
